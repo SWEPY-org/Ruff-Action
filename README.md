@@ -27,11 +27,13 @@ venv:
 
 ## Variables
 
-| Name           | Description                                                                                                                                                   | Default              |
-|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|
-| `PROJECT_PATH` | The path to the project root directory.                                                                                                                       | `"."`                |
-| `IMAGE_TAG`    | The default tag for the docker image. See [Python Docker Official Image](https://hub.docker.com/_/python) for supported tags and respective Dockerfile links. | `"latest"`           |
-| `PYTHON_SETUP` | Bash commands to setup your python environment.                                                                                                               | `"pip install ruff"` |
+| Name           | Description                             | Default                    |
+|----------------|-----------------------------------------|----------------------------|
+| `IMAGE_NAME`   | The default name for the docker image.  | `"python"`                 |
+| `IMAGE_TAG`    | The default tag for the docker image.   | `"latest"`                 |
+| `IMAGE`        | The default docker image name.          | `"$IMAGE_NAME:$IMAGE_TAG"` |
+| `PROJECT_PATH` | The path to the project root directory. | `"."`                      |
+| `RUFF_CMD`     | The command to run Ruff.                | `"ruff check"`             |
 
 ### Global Configuration of Ruff
 
