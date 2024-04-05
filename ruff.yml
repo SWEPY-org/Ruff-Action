@@ -20,7 +20,7 @@ ruff:
         IMAGE_TAG: 'latest'
         IMAGE: '$IMAGE_NAME:$IMAGE_TAG'
         PROJECT_PATH: '.'
-        RUFF_CMD: 'ruff check'
+        RUFF_CMD: 'ruff check ; ruff format'
     image: $IMAGE
     stage: test
     before_script:
