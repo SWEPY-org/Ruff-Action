@@ -1,0 +1,28 @@
+stages:
+    - build
+    - test
+    - deploy
+
+include:
+    -   remote: 'https://gitlab.com/r2devops/hub/-/raw/template_release@0.2.1/jobs/template_release/template_release.yml'
+    -   remote: 'https://lab.frogg.it/swepy/cicd-templates/ruff/-/raw/$CI_COMMIT_BRANCH$CI_COMMIT_TAG/ruff.yml'
+
+ruff:
+    variables:
+        PROJECT_PATH: "tests/ruff_project"
+
+ruff-destructive:
+    extends: ruff
+    variables:
+        PROJECT_PATH: "tests/ruff_destructive_project"
+    script:
+        - pwd
+        - >
+            ruff check > /dev/null 2>&1 || EXIT_CODE=$?;
+            if [ $EXIT_CODE -eq 1 ]; then
+                echo "Ruff found issues as it should"
+                exit 0
+            else
+                echo "Ruff did not find issues as it should"
+                exit 1
+            fi

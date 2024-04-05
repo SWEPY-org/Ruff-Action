@@ -1,0 +1,33 @@
+include:
+    -   remote: 'https://lab.frogg.it/swepy/cicd-templates/venv/-/raw/venv@0.1.0/venv.yml'
+
+venv:
+    rules:
+        -   when: never
+
+ruff_venv:
+    extends: venv
+    stage: build
+    variables:
+        PYTHON_SETUP: 'pip install ruff'
+        VENV_ARTIFACT_NAME: 'ruff_venv'
+    rules:
+        -   when: null
+
+ruff:
+    variables:
+        IMAGE_NAME: 'python'
+        IMAGE_TAG: 'latest'
+        IMAGE: '$IMAGE_NAME:$IMAGE_TAG'
+        PROJECT_PATH: '.'
+        RUFF_CMD: 'ruff check'
+    image: $IMAGE
+    stage: test
+    before_script:
+        - source venv/bin/activate
+        - cd $PROJECT_PATH
+    script:
+        - $RUFF_CMD
+    needs:
+        -   job: ruff_venv
+            artifacts: true

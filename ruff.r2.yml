@@ -1,0 +1,14 @@
+files:
+    template: ruff.yml
+    documentation: README.md
+    changelog: CHANGELOG.md
+data:
+    description: "Run ruff on your repository"
+    icon: ⚡
+    public: False
+    labels:
+        - Lint
+        - Utilities
+        - Code Quality
+        - Python
+    deprecated: False

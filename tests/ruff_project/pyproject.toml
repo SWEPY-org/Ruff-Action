@@ -1,0 +1,11 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[project]
+name = "ruff_project"
+version = "0.1.0"
+authors = [
+    {email = "author.name@example.com", name = "Author Name"},
+]
+description = "A description of what the package is for."
