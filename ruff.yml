@@ -20,14 +20,20 @@ ruff:
         IMAGE_TAG: 'latest'
         IMAGE: '$IMAGE_NAME:$IMAGE_TAG'
         PROJECT_PATH: '.'
-        RUFF_CMD: 'ruff check'
+        RUFF_CHECK: 'ruff check'
+        RUFF_FORMAT: 'ruff format --check'
     image: $IMAGE
     stage: test
     before_script:
         - source venv/bin/activate
+        - echo $PROJECT_PATH  # Debug
         - cd $PROJECT_PATH
+        - pwd  # Debug
     script:
-        - $RUFF_CMD
+        - echo $RUFF_CHECK  # Debug
+        - $RUFF_CHECK
+        - echo $RUFF_FORMAT  # Debug
+        - $RUFF_FORMAT
     needs:
         -   job: ruff_venv
             artifacts: true

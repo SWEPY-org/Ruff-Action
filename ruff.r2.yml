@@ -11,4 +11,5 @@ data:
         - Utilities
         - Code Quality
         - Python
+    license: MIT
     deprecated: False

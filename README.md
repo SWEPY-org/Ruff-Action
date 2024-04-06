@@ -1,5 +1,9 @@
 # ruff template
 
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/main/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://lab.frogg.it/dorianturba/r2devops_catalog/-/blob/main/LICENSE)
+
 ## Objective
 
 Run [Ruff](https://github.com/astral-sh/ruff), an extremely fast Python linter, on your
@@ -27,11 +31,13 @@ venv:
 
 ## Variables
 
-| Name           | Description                                                                                                                                                   | Default              |
-|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|
-| `PROJECT_PATH` | The path to the project root directory.                                                                                                                       | `"."`                |
-| `IMAGE_TAG`    | The default tag for the docker image. See [Python Docker Official Image](https://hub.docker.com/_/python) for supported tags and respective Dockerfile links. | `"latest"`           |
-| `PYTHON_SETUP` | Bash commands to setup your python environment.                                                                                                               | `"pip install ruff"` |
+| Name           | Description                             | Default                    |
+|----------------|-----------------------------------------|----------------------------|
+| `IMAGE_NAME`   | The default name for the docker image.  | `"python"`                 |
+| `IMAGE_TAG`    | The default tag for the docker image.   | `"latest"`                 |
+| `IMAGE`        | The default docker image name.          | `"$IMAGE_NAME:$IMAGE_TAG"` |
+| `PROJECT_PATH` | The path to the project root directory. | `"."`                      |
+| `RUFF_CMD`     | The command to run Ruff.                | `"ruff check"`             |
 
 ### Global Configuration of Ruff
 
@@ -54,5 +60,5 @@ badge ([![Code style: Ruff](https://img.shields.io/badge/Linter-Ruff-blue)](http
 is also available:
 
 ```markdown
-[![Ruff](https://img.shields.io/badge/Linter-Ruff-blue)](https://github.com/astral-sh/ruff)
+[![Code style: Ruff](https://img.shields.io/badge/Linter-Ruff-blue)](https://github.com/astral-sh/ruff)
 ```
