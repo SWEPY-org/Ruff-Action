@@ -1,5 +1,9 @@
 # ruff template
 
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/main/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://lab.frogg.it/dorianturba/r2devops_catalog/-/blob/main/LICENSE)
+
 ## Objective
 
 Run [Ruff](https://github.com/astral-sh/ruff), an extremely fast Python linter, on your
@@ -56,5 +60,5 @@ badge ([![Code style: Ruff](https://img.shields.io/badge/Linter-Ruff-blue)](http
 is also available:
 
 ```markdown
-[![Ruff](https://img.shields.io/badge/Linter-Ruff-blue)](https://github.com/astral-sh/ruff)
+[![Code style: Ruff](https://img.shields.io/badge/Linter-Ruff-blue)](https://github.com/astral-sh/ruff)
 ```

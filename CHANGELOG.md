@@ -7,6 +7,8 @@ All notable changes to this job will be documented in this file.
 ### Added
 
 * Ruff configuration to run ruff formatter.
+* MIT license attached to the template.
+* Badges in README.md.
 
 ### Changed
 
