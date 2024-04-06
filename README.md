@@ -13,12 +13,11 @@ Python code to detect various syntax and stylistic errors.
 !!! warning If you use the venv template, make sure to include it after the ruff
 template to reset its configuration to default. Otherwise, you can include this in your
 `.gitlab-ci.yml` file to reset the configuration:
-
-```yaml
-venv:
-    rules:
-        -   when: null
-```
+   ```yaml
+   venv:
+       rules:
+           -   when: null
+   ```
 
 ## How to use it
 
