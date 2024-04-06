@@ -1,8 +1,8 @@
-# ruff template
+# Ruff template
 
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/main/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://lab.frogg.it/dorianturba/r2devops_catalog/-/blob/main/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/blob/main/LICENSE)
 
 ## Objective
 
@@ -13,12 +13,11 @@ Python code to detect various syntax and stylistic errors.
 !!! warning If you use the venv template, make sure to include it after the ruff
 template to reset its configuration to default. Otherwise, you can include this in your
 `.gitlab-ci.yml` file to reset the configuration:
-
-```yaml
-venv:
-    rules:
-        -   when: null
-```
+   ```yaml
+   venv:
+       rules:
+           -   when: null
+   ```
 
 ## How to use it
 
