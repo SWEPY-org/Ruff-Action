@@ -1,5 +1,5 @@
 include:
-    -   remote: 'https://lab.frogg.it/swepy/cicd-templates/venv/-/raw/venv@0.1.0/venv.yml'
+    -   remote: 'https://lab.frogg.it/swepy/cicd-templates/venv/-/raw/venv@1.0.0/venv.yml'
 
 venv:
     rules:
