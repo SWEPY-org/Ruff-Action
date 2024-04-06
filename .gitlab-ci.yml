@@ -16,12 +16,10 @@ ruff-destructive:
     variables:
         PROJECT_PATH: "tests/ruff_destructive_project"
     script:
-        - pwd
         - >
             ruff check > /dev/null 2>&1 || EXIT_CODE=$?;
             if [ $EXIT_CODE -eq 1 ]; then
                 echo "'ruff check' found issues as it should"
-                exit 0
             else
                 echo "'ruff check' did not find issues as it should"
                 exit 1
@@ -30,7 +28,6 @@ ruff-destructive:
             ruff format > /dev/null 2>&1 || EXIT_CODE=$?;
             if [ $EXIT_CODE -eq 1 ]; then
                 echo "'ruff format --check' found issues as it should"
-                exit 0
             else
                 echo "'ruff format --check' did not find issues as it should"
                 exit 1
