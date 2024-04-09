@@ -7,9 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.2] - 2024-04-09
 
-[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/ruff@1.0.1/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines?ref=ruff%401.0.1)
+[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/ruff@1.0.2/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines?ref=ruff%401.0.2)
 
 ### Fixed
+
 * README.me, formatting and variables. 
 
 ## [1.0.1] - 2024-04-06
