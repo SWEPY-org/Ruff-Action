@@ -15,9 +15,10 @@ template to reset its configuration to default. Otherwise, you can include this 
 `.gitlab-ci.yml` file to reset the configuration:
 
 ```yaml
+# Reset the venv template configuration
 venv:
-rules:
-    -   when: null
+   rules:
+        -   when: null
 ```
 
 ## How to use it
