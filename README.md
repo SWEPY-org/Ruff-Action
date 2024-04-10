@@ -10,15 +10,8 @@ Run [Ruff](https://github.com/astral-sh/ruff), an extremely fast Python linter, 
 Python code. This tool is written in Rust, and it is designed to quickly analyze your
 Python code to detect various syntax and stylistic errors.
 
-!!! warning If you use the venv template, make sure to include it after the ruff
-template to reset its configuration to default. Otherwise, you can include this in your
-`.gitlab-ci.yml` file to reset the configuration:
-```yaml
-# Reset the venv template configuration
-venv:
-   rules:
-        -   when: null
-```
+!!! warning If you use the venv template,
+see [Reset venv configuration](#reset-venv-configuration).
 
 ## How to use it
 
@@ -62,4 +55,17 @@ is also available:
 
 ```markdown
 [![Code style: Ruff](https://img.shields.io/badge/Linter-Ruff-blue)](https://github.com/astral-sh/ruff)
+```
+
+## FAQ
+
+### How do I reset the `venv` configuration if I need to use it ?
+
+You can add this configuration in your `.gitlab-ci.yml` file to reset `venv`:
+
+```yaml
+# Reset the venv template configuration altered by the Ruff template.
+venv:
+    rules:
+        -   when: null
 ```
