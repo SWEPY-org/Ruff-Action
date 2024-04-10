@@ -5,6 +5,14 @@ All notable changes to this job will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2024-04-10
+
+[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/ruff@1.0.3/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines?ref=ruff%401.0.3)
+
+### Added
+
+* TOC and FAQ section in the README.md file.
+
 ## [1.0.2] - 2024-04-09
 
 [![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/ruff@1.0.2/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines?ref=ruff%401.0.2)
