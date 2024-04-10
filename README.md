@@ -4,6 +4,17 @@
 [![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/main/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/blob/main/LICENSE)
 
+<!-- TOC -->
+* [Ruff template](#ruff-template)
+  * [Objective](#objective)
+  * [How to use it](#how-to-use-it)
+  * [Variables](#variables)
+    * [Global Configuration of Ruff](#global-configuration-of-ruff)
+  * [Add an official ![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json) badge to your project README.md](#add-an-official--badge-to-your-project-readmemd)
+  * [FAQ](#faq)
+    * [How do I reset the `venv` configuration if I need to use it ?](#how-do-i-reset-the-venv-configuration-if-i-need-to-use-it-)
+<!-- TOC -->
+
 ## Objective
 
 Run [Ruff](https://github.com/astral-sh/ruff), an extremely fast Python linter, on your
