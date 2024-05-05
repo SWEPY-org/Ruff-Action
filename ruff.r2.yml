@@ -5,7 +5,7 @@ files:
 data:
     description: "Run ruff on your repository"
     icon: ⚡
-    public: False
+    public: True
     labels:
         - Lint
         - Utilities
