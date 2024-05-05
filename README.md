@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/blob/main/LICENSE)
 
 <!-- TOC -->
+
 * [Ruff template](#ruff-template)
   * [Objective](#objective)
   * [How to use it](#how-to-use-it)
@@ -13,6 +14,7 @@
   * [Add an official ![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json) badge to your project README.md](#add-an-official--badge-to-your-project-readmemd)
   * [FAQ](#faq)
     * [How do I reset the `venv` configuration if I need to use it ?](#how-do-i-reset-the-venv-configuration-if-i-need-to-use-it-)
+
 <!-- TOC -->
 
 ## Objective
@@ -70,7 +72,9 @@ is also available:
 
 ## FAQ
 
-### How do I reset the `venv` configuration if I need to use it ?
+### Need `venv` to be reset
+
+> How do I reset the `venv` configuration if I need to use it ?
 
 You can add this configuration in your `.gitlab-ci.yml` file to reset `venv`:
 
@@ -80,3 +84,10 @@ venv:
     rules:
         -   when: null
 ```
+
+### Legacy Projects, logs too long
+
+> For projects that already have a lot of code that does not comply with the Ruff, the 
+> job will fail and the logs might be too long to be useful. How can I handle this?
+
+
