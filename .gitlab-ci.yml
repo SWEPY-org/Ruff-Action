@@ -1,6 +1,6 @@
 include:
     -   component: $CI_SERVER_HOST/swepy/cicd-templates/release-by-changelog/release-by-changelog@0.4.5
-    -   remote: https://${CI_SERVER_HOST}/${CI_PROJECT_PATH}/-/raw/$CI_COMMIT_REF_NAME/ruff.yml
+    -   remote: https://${CI_SERVER_HOST}/${CI_PROJECT_PATH}/-/raw/$CI_COMMIT_REF_NAME/templates/ruff.yml
         inputs:
             project path: tests/ruff_project
 
