@@ -15,12 +15,12 @@ ruff:
     variables:
         PROJECT_PATH: $[[ inputs.project_path ]]
         RUFF_VERSION: $[[ inputs.ruff_version ]]
-        RUFF_CHECK_CMD: "ruff check"
-        RUFF_FORMAT_CMD: "ruff format --check"
+        RUFF_CHECK_OPTIONS: ""
+        RUFF_FORMAT_OPTIONS: "--check"
     image: swepy/ruff:$RUFF_VERSION
     stage: $[[ inputs.stage ]]
     before_script:
         - cd $PROJECT_PATH
     script:
-        - $RUFF_CHECK_CMD
-        - $RUFF_FORMAT_CMD
+        - ruff check $RUFF_CHECK_OPTIONS
+        - ruff format $RUFF_FORMAT_OPTIONS
