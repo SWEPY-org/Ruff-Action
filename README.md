@@ -13,7 +13,7 @@
     * [Global Configuration of Ruff](#global-configuration-of-ruff)
   * [Add an official ![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json) badge to your project README.md](#add-an-official--badge-to-your-project-readmemd)
   * [FAQ](#faq)
-    * [How do I reset the `venv` configuration if I need to use it ?](#how-do-i-reset-the-venv-configuration-if-i-need-to-use-it-)
+    * [Legacy Projects, logs too long](#legacy-projects-logs-too-long)
 
 <!-- TOC -->
 
@@ -22,9 +22,6 @@
 Run [Ruff](https://github.com/astral-sh/ruff), an extremely fast Python linter, on your
 Python code. This tool is written in Rust, and it is designed to quickly analyze your
 Python code to detect various syntax and stylistic errors.
-
-!!! warning If you use the venv template,
-see [Reset venv configuration](#reset-venv-configuration).
 
 ## How to use it
 
@@ -72,22 +69,7 @@ is also available:
 
 ## FAQ
 
-### Need `venv` to be reset
-
-> How do I reset the `venv` configuration if I need to use it ?
-
-You can add this configuration in your `.gitlab-ci.yml` file to reset `venv`:
-
-```yaml
-# Reset the venv template configuration altered by the Ruff template.
-venv:
-    rules:
-        -   when: null
-```
-
 ### Legacy Projects, logs too long
 
-> For projects that already have a lot of code that does not comply with the Ruff, the 
+> For projects that already have a lot of code that does not comply with the Ruff, the
 > job will fail and the logs might be too long to be useful. How can I handle this?
-
-
