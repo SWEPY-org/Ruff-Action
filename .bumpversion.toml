@@ -23,3 +23,7 @@ search = """## [Unreleased]
 
 [![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/trunk/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
 """
+
+[[tool.bumpversion.files]]
+allow-dirty = true
+filename = "README.md"
