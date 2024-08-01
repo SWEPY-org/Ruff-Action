@@ -19,18 +19,35 @@
 
 ## Objective
 
-Run [Ruff](https://github.com/astral-sh/ruff), an extremely fast Python linter, on your
-Python code. This tool is written in Rust, and it is designed to quickly analyze your
-Python code to detect various syntax and stylistic errors.
+Run [Ruff](https://github.com/astral-sh/ruff), an extremely fast Python linter, on your Python code.
 
 ## How to use it
 
-1. Configure the `pyproject.toml` file in your repository's root directory with your
-   desired rules.
-2. Include the Ruff template in your GitLab CI/CD configuration.
-3. If you need to customize the job, refer to
-   the [jobs customization](https://docs.r2devops.io/get-started/use-templates/#job-templates-customization)
-   documentation.
+1. [Configure ruff](https://docs.astral.sh/ruff/configuration/) for your project
+2. Include the ruff component in your `.gitlab-ci.yml`
+
+### Include the component/template
+
+Add the following to your `.gitlab-ci.yml` file.
+
+As a Component (recommended) if the component is supported
+or [mirrored](https://docs.gitlab.com/ee/user/project/repository/mirror/pull.html) by
+your instance:
+
+```yaml
+include:
+    -   component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@1.0.2
+```
+
+[![Supported by GitLab.com](https://img.shields.io/badge/Supported_by-GitLab.com-orange)](https://gitlab.com)
+[![Supported by Frogg.it](https://img.shields.io/badge/Supported_by-Frogg.it-green)](https://froggit.fr/)
+
+As a remote Template if the component is not supported or mirrored by your instance:
+
+```yaml
+include:
+    -   remote: 'https://gitlab.com/swepy/cicd-templates/ruff/-/raw/1.0.2/templates/ruff.yml'
+```
 
 ## Variables
 
@@ -42,13 +59,6 @@ Python code to detect various syntax and stylistic errors.
 | `PROJECT_PATH` | The path to the project root directory. | `"."`                      |
 | `RUFF_CHECK`   | The command to run Ruff check.          | `"ruff check"`             |
 | `RUFF_FORMAT`  | The command to run Ruff format.         | `"ruff format --check"`    |
-
-### Global Configuration of Ruff
-
-To add configuration to `ruff` that is shared with any other usage of Ruff (such as
-manual run, pre-commit, etc), you can use a `pyproject.toml`, `ruff.toml`,
-or `.ruff.toml` configuration file in your project's root directory. Learn more
-about [ruff configuration](https://beta.ruff.rs/docs/configuration/) files.
 
 ## Add an official [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff) badge to your project README.md
 
