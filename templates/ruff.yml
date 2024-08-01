@@ -3,18 +3,18 @@ spec:
         stage:
             description: "The stage of the job."
             default: test
-        project_path:
+        project path:
             description: "The path to the project root directory."
             default: '.'
-        ruff_version:
+        ruff version:
             description: "The version of ruff to be use."
             default: 'latest'
 
 ---
 ruff:
     variables:
-        PROJECT_PATH: $[[ inputs.project_path ]]
-        RUFF_VERSION: $[[ inputs.ruff_version ]]
+        PROJECT_PATH: $[[ inputs.project path ]]
+        RUFF_VERSION: $[[ inputs.ruff version ]]
         RUFF_CHECK_OPTIONS: ""
         RUFF_FORMAT_OPTIONS: "--check"
     image: swepy/ruff:$RUFF_VERSION
