@@ -8,7 +8,7 @@ spec:
             default: .
         ruff version:
             description: The version of ruff to be use.
-            default: 0
+            default: '0'
 
 ---
 ruff:
