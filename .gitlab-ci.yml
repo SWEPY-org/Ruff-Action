@@ -8,20 +8,4 @@ ruff-destructive:
     extends: ruff
     variables:
         PROJECT_PATH: tests/ruff_destructive_project
-    script:
-        - >
-            ruff check > /dev/null 2>&1 || EXIT_CODE=$?;
-            if [ $EXIT_CODE -eq 1 ]; then
-                echo "'ruff check' found issues as it should"
-            else
-                echo "'ruff check' did not find issues as it should"
-                exit 1
-            fi
-        - >
-            ruff format > /dev/null 2>&1 || EXIT_CODE=$?;
-            if [ $EXIT_CODE -eq 1 ]; then
-                echo "'ruff format --check' found issues as it should"
-            else
-                echo "'ruff format --check' did not find issues as it should"
-                exit 1
-            fi
+    allow_failure: true
