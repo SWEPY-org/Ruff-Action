@@ -4,7 +4,7 @@ include:
         ref: $CI_COMMIT_REF_NAME
         file: templates/ruff.yml
         inputs:
-            project path: tests/ruff_project
+            project_path: tests/ruff_project
 
 ruff_destructive:
     extends: ruff
