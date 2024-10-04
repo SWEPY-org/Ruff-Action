@@ -6,7 +6,7 @@ include:
         inputs:
             project path: tests/ruff_project
 
-ruff-destructive:
+ruff_destructive:
     extends: ruff
     variables:
         PROJECT_PATH: tests/ruff_destructive_project
