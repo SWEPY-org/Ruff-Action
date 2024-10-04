@@ -32,33 +32,57 @@ Add the following to your `.gitlab-ci.yml` file.
 
 As a Component (recommended) if the component is supported
 or [mirrored](https://docs.gitlab.com/ee/user/project/repository/mirror/pull.html) by
-your instance:
+your instance.
+Variables are set with the inputs, in include section.
+You can customize the job by overriding specific inputs:
 
 ```yaml
 include:
     -   component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@1.0.2
+        inputs:
+            project_path: 'path/to/my/project'
 ```
 
 [![Supported by GitLab.com](https://img.shields.io/badge/Supported_by-GitLab.com-orange)](https://gitlab.com)
 [![Supported by Frogg.it](https://img.shields.io/badge/Supported_by-Frogg.it-green)](https://froggit.fr/)
 
-As a remote Template if the component is not supported or mirrored by your instance:
+As a local Template (if the template is local to the instance)
+Variables are set with the inputs, in include section.
+You can customize the job by overriding specific inputs:
 
 ```yaml
 include:
-    -   remote: 'https://gitlab.com/swepy/cicd-templates/ruff/-/raw/1.0.2/templates/ruff.yml'
+    -   project: 'swepy/cicd-templates/ruff'
+        ref: '$CI_COMMIT_BRANCH$CI_COMMIT_TAG'
+        file: 'templates/ruff.yml'
+        inputs:
+            project_path: 'path/to/my/project'
+```
+
+### Inputs
+
+| Name              | Description                                            | Default                 |
+|-------------------|--------------------------------------------------------|-------------------------|
+| `project_path`    | The path to the project root directory.                | `"."`                   |
+| `stage`           | The stage of the job.                                  | `test`                  |
+| `ruff_version`    | The version of ruff to be use.                         | `"latest"`              |
+
+## Customize with variables
+
+You can customize the variables job by overriding it. For example:
+
+```yaml
+ruff:
+    variables:
+        RUFF_CHECK_OPTIONS: "--fix"
 ```
 
 ## Variables
 
-| Name           | Description                             | Default                    |
-|----------------|-----------------------------------------|----------------------------|
-| `IMAGE_NAME`   | The default name for the docker image.  | `"python"`                 |
-| `IMAGE_TAG`    | The default tag for the docker image.   | `"latest"`                 |
-| `IMAGE`        | The default docker image name.          | `"$IMAGE_NAME:$IMAGE_TAG"` |
-| `PROJECT_PATH` | The path to the project root directory. | `"."`                      |
-| `RUFF_CHECK`   | The command to run Ruff check.          | `"ruff check"`             |
-| `RUFF_FORMAT`  | The command to run Ruff format.         | `"ruff format --check"`    |
+| Name                  | Description                          | Default                 |
+|-----------------------|--------------------------------------|-------------------------|
+| `RUFF_CHECK_OPTIONS`  | The options for ruff check command.  | `""`          |
+| `RUFF_FORMAT_OPTIONS` | The options for ruff format command. | `"--check"` |
 
 ## Add an official [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff) badge to your project README.md
 
