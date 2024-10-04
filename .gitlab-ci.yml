@@ -1,5 +1,5 @@
 include:
-    -   remote: https://gitlab.com/swepy/cicd-templates/release-by-changelog/-/raw/0.4.5/templates/release-by-changelog.yml
+    -   component: $CI_SERVER_FQDN/swepy/cicd-templates/release-by-changelog/release-by-changelog@1.0.0
     -   project: swepy/cicd-templates/ruff
         ref: $CI_COMMIT_REF_NAME
         file: templates/ruff.yml
