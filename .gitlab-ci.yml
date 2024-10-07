@@ -9,7 +9,7 @@ include:
 ruff_destructive:
   extends: ruff
   variables:
-    PROJECT_PATH: tests/ruff_project
+    PROJECT_PATH: tests/ruff_destructive_project
   after_script:
     - echo "The job is run on a poorly written project and must fail."
     - echo $CI_JOB_STATUS > ci_job_status.txt
