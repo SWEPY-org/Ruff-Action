@@ -19,8 +19,7 @@ ruff:
         RUFF_FORMAT_OPTIONS: --check
     image: swepy/ruff:$RUFF_VERSION
     stage: $[[ inputs.stage ]]
-    before_script:
-        - cd $PROJECT_PATH
     script:
+        - cd $PROJECT_PATH
         - ruff check $RUFF_CHECK_OPTIONS
         - ruff format $RUFF_FORMAT_OPTIONS
