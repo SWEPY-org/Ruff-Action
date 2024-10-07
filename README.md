@@ -38,7 +38,7 @@ You can customize the job by overriding specific inputs:
 
 ```yaml
 include:
-  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@1.0.2
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@2.0.0
     inputs:
       project_path: 'path/to/my/project'
 ```
