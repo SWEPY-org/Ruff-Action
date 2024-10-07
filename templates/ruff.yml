@@ -20,6 +20,5 @@ ruff:
     image: swepy/ruff:$RUFF_VERSION
     stage: $[[ inputs.stage ]]
     script:
-        - cd $PROJECT_PATH
-        - ruff check $RUFF_CHECK_OPTIONS
-        - ruff format $RUFF_FORMAT_OPTIONS
+        - ruff check $RUFF_CHECK_OPTIONS $PROJECT_PATH
+        - ruff format $RUFF_FORMAT_OPTIONS $PROJECT_PATH
