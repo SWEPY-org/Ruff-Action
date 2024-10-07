@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * TOC and FAQ section in the README.md file
 * A new test that ensure that the job fails on miss-formated projects
 
+### Added
+
+* GitHub Action support
+
 ### Changed
 
 * Move command `cd $PROJECT_PATH` from `before_script` to `script` section of the component

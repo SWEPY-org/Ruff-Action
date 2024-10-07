@@ -7,13 +7,13 @@
 <!-- TOC -->
 
 * [Ruff template](#ruff-template)
-  * [Objective](#objective)
-  * [How to use it](#how-to-use-it)
-  * [Variables](#variables)
-    * [Global Configuration of Ruff](#global-configuration-of-ruff)
-  * [Add an official ![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json) badge to your project README.md](#add-an-official--badge-to-your-project-readmemd)
-  * [FAQ](#faq)
-    * [Legacy Projects, logs too long](#legacy-projects-logs-too-long)
+    * [Objective](#objective)
+    * [How to use it](#how-to-use-it)
+    * [Variables](#variables)
+        * [Global Configuration of Ruff](#global-configuration-of-ruff)
+    * [Add an official ![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json) badge to your project README.md](#add-an-official--badge-to-your-project-readmemd)
+    * [FAQ](#faq)
+        * [Legacy Projects, logs too long](#legacy-projects-logs-too-long)
 
 <!-- TOC -->
 
@@ -38,9 +38,9 @@ You can customize the job by overriding specific inputs:
 
 ```yaml
 include:
-    -   component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@1.0.2
-        inputs:
-            project_path: 'path/to/my/project'
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@1.0.2
+    inputs:
+      project_path: 'path/to/my/project'
 ```
 
 [![Supported by GitLab.com](https://img.shields.io/badge/Supported_by-GitLab.com-orange)](https://gitlab.com)
@@ -52,20 +52,20 @@ You can customize the job by overriding specific inputs:
 
 ```yaml
 include:
-    -   project: 'swepy/cicd-templates/ruff'
-        ref: '$CI_COMMIT_BRANCH$CI_COMMIT_TAG'
-        file: 'templates/ruff.yml'
-        inputs:
-            project_path: 'path/to/my/project'
+  - project: 'swepy/cicd-templates/ruff'
+    ref: '$CI_COMMIT_BRANCH$CI_COMMIT_TAG'
+    file: 'templates/ruff.yml'
+    inputs:
+      project_path: 'path/to/my/project'
 ```
 
 ### Inputs
 
-| Name              | Description                                            | Default                 |
-|-------------------|--------------------------------------------------------|-------------------------|
-| `project_path`    | The path to the project root directory.                | `"."`                   |
-| `stage`           | The stage of the job.                                  | `test`                  |
-| `ruff_version`    | The version of ruff to be use.                         | `"latest"`              |
+| Name           | Description                             | Default    |
+|----------------|-----------------------------------------|------------|
+| `project_path` | The path to the project root directory. | `"."`      |
+| `stage`        | The stage of the job.                   | `test`     |
+| `ruff_version` | The version of ruff to be use.          | `"latest"` |
 
 ## Customize with variables
 
@@ -73,15 +73,15 @@ You can customize the variables job by overriding it. For example:
 
 ```yaml
 ruff:
-    variables:
-        RUFF_CHECK_OPTIONS: "--fix"
+  variables:
+    RUFF_CHECK_OPTIONS: "--fix"
 ```
 
 ## Variables
 
-| Name                  | Description                          | Default                 |
-|-----------------------|--------------------------------------|-------------------------|
-| `RUFF_CHECK_OPTIONS`  | The options for ruff check command.  | `""`          |
+| Name                  | Description                          | Default     |
+|-----------------------|--------------------------------------|-------------|
+| `RUFF_CHECK_OPTIONS`  | The options for ruff check command.  | `""`        |
 | `RUFF_FORMAT_OPTIONS` | The options for ruff format command. | `"--check"` |
 
 ## Add an official [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff) badge to your project README.md
