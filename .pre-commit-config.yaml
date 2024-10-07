@@ -1,0 +1,21 @@
+---
+default_stages: [pre-commit]
+
+repos:
+    # https://pre-commit.com/hooks.html
+    -   repo: https://github.com/pre-commit/pre-commit-hooks
+        rev: v4.6.0
+        hooks:
+            -   id: check-case-conflict  # blocking
+            -   id: check-merge-conflict  # blocking
+            -   id: detect-private-key  # blocking
+            -   id: fix-byte-order-marker  # auto-fix
+            -   id: trailing-whitespace  # auto-fix
+
+    # force respect of Conventional Commits formatting: https://www.conventionalcommits.org/en/v1.0.0/
+    -   repo: https://github.com/compilerla/conventional-pre-commit
+        rev: v3.4.0
+        hooks:
+            -   id: conventional-pre-commit
+                stages: [commit-msg]
+                args: [feat, fix, ci, doc, chore, test] # optional: list of Conventional Commits types to allow e.g. [feat, fix, ci, chore, test]
