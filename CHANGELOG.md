@@ -9,14 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/trunk/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
 
+* TOC and FAQ section in the README.md file
+* A new test that ensure that the job fails on miss-formated projects
+
 ### Changed
 
-* Changed input names `project_path` and `ruff_version` to `project path`
-  and `ruff version`
-
-### Added
-
-* TOC and FAQ section in the README.md file
+* Move command `cd $PROJECT_PATH` from `before_script` to `script` section of the component
 
 ## [1.0.2] - 2024-04-09
 
