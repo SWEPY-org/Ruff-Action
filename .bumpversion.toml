@@ -25,5 +25,10 @@ search = """## [Unreleased]
 """
 
 [[tool.bumpversion.files]]
-allow-dirty = true
 filename = "README.md"
+
+[[tool.bumpversion.files]]
+filename = "docs/github.md"
+
+[[tool.bumpversion.files]]
+filename = "docs/gitlab.md"
