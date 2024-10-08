@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 * Move command `cd $PROJECT_PATH` from `before_script` to `script` section of the component
+* `project_path` has been renamed `target_paths` and can contain multiple path i.e. "src tests dev/scripts"
 
 ## [1.0.2] - 2024-04-09
 
