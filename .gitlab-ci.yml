@@ -4,12 +4,17 @@ include:
     ref: $CI_COMMIT_REF_NAME
     file: templates/ruff.yml
     inputs:
-      project_path: tests/ruff_project
+      target_paths: tests/ruff_project
+
+ruff_many_folder:
+  extends: ruff
+  variables:
+    TARGET_PATHS: tests/ruff_project/src tests/ruff_project/tests
 
 ruff_destructive:
   extends: ruff
   variables:
-    PROJECT_PATH: tests/ruff_destructive_project
+    TARGET_PATHS: tests/ruff_destructive_project
   after_script:
     - echo "The job is run on a poorly written project and must fail."
     - echo $CI_JOB_STATUS > ci_job_status.txt
