@@ -3,8 +3,8 @@ spec:
         stage:
             description: The stage of the job.
             default: test
-        project_path:
-            description: The path to the project root directory.
+        target_paths:
+            description: Paths to directories to lint.
             default: .
         ruff_version:
             description: The version of ruff to be use.
@@ -13,12 +13,12 @@ spec:
 ---
 ruff:
     variables:
-        PROJECT_PATH: $[[ inputs.project_path ]]
+        TARGET_PATHS: $[[ inputs.target_paths ]]
         RUFF_VERSION: $[[ inputs.ruff_version ]]
         RUFF_CHECK_OPTIONS: ""
         RUFF_FORMAT_OPTIONS: --check
     image: swepy/ruff:$RUFF_VERSION
     stage: $[[ inputs.stage ]]
     script:
-        - ruff check $RUFF_CHECK_OPTIONS $PROJECT_PATH
-        - ruff format $RUFF_FORMAT_OPTIONS $PROJECT_PATH
+        - ruff check $RUFF_CHECK_OPTIONS $TARGET_PATHS
+        - ruff format $RUFF_FORMAT_OPTIONS $TARGET_PATHS

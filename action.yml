@@ -5,8 +5,8 @@ branding:
   color: 'purple'
 
 inputs:
-  project_path:
-    description: 'Project to lint'
+  target_paths:
+    description: 'Paths to directory to lint.'
     required: false
     default: '.'
 
@@ -18,9 +18,9 @@ runs:
     - name: Run Ruff Linter
       shell: sh
       env:
-        PROJECT_PATH: ${{ inputs.project_path }}
+        TARGET_PATHS: ${{ inputs.target_paths }}
         RUFF_CHECK_OPTIONS: ''
         RUFF_FORMAT_OPTIONS: '--check'
       run: |
-        ruff check $RUFF_CHECK_OPTIONS $PROJECT_PATH
-        ruff format $RUFF_FORMAT_OPTIONS $PROJECT_PATH
+        ruff check $RUFF_CHECK_OPTIONS $TARGET_PATHS
+        ruff format $RUFF_FORMAT_OPTIONS $TARGET_PATHS
