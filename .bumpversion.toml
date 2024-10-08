@@ -1,0 +1,34 @@
+[tool.bumpversion]
+commit = true
+current_version = "2.0.0"
+parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
+replace = "{new_version}"
+search = "{current_version}"
+serialize = [
+    "{major}.{minor}.{patch}",
+]
+tag = false
+
+[[tool.bumpversion.files]]
+filename = "CHANGELOG.md"
+replace = """## [Unreleased]
+
+[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/trunk/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+
+## [{new_version}] - {now:%Y-%m-%d}
+
+[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/{new_version}/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+"""
+search = """## [Unreleased]
+
+[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/trunk/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+"""
+
+[[tool.bumpversion.files]]
+filename = "README.md"
+
+[[tool.bumpversion.files]]
+filename = "docs/github.md"
+
+[[tool.bumpversion.files]]
+filename = "docs/gitlab.md"

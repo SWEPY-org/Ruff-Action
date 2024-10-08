@@ -1,34 +1,37 @@
-stages:
-    - build
-    - test
-    - deploy
-
 include:
-    -   remote: 'https://gitlab.com/r2devops/hub/-/raw/template_release@0.2.1/jobs/template_release/template_release.yml'
-    -   remote: 'https://${CI_SERVER_HOST}/${CI_PROJECT_PATH}/-/raw/$CI_COMMIT_BRANCH$CI_COMMIT_TAG/ruff.yml'
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/release-by-changelog/release-by-changelog@1.0.0
+  - project: swepy/cicd-templates/ruff
+    ref: $CI_COMMIT_REF_NAME
+    file: templates/ruff.yml
+    inputs:
+      target_paths: tests/ruff_project
 
-ruff:
-    variables:
-        PROJECT_PATH: "tests/ruff_project"
+ruff_many_folder:
+  extends: ruff
+  variables:
+    TARGET_PATHS: tests/ruff_project/src tests/ruff_project/tests
 
-ruff-destructive:
-    extends: ruff
-    variables:
-        PROJECT_PATH: "tests/ruff_destructive_project"
-    script:
-        - >
-            ruff check > /dev/null 2>&1 || EXIT_CODE=$?;
-            if [ $EXIT_CODE -eq 1 ]; then
-                echo "'ruff check' found issues as it should"
-            else
-                echo "'ruff check' did not find issues as it should"
-                exit 1
-            fi
-        - >
-            ruff format > /dev/null 2>&1 || EXIT_CODE=$?;
-            if [ $EXIT_CODE -eq 1 ]; then
-                echo "'ruff format --check' found issues as it should"
-            else
-                echo "'ruff format --check' did not find issues as it should"
-                exit 1
-            fi
+ruff_destructive:
+  extends: ruff
+  variables:
+    TARGET_PATHS: tests/ruff_destructive_project
+  after_script:
+    - echo "The job is run on a poorly written project and must fail."
+    - echo $CI_JOB_STATUS > ci_job_status.txt
+  artifacts:
+    paths:
+      - ci_job_status.txt
+  allow_failure: true
+
+ruff_destructive_check:
+  stage: test
+  script:
+    - >
+      if grep -q "success" "ci_job_status.txt"; then
+        echo "ruff_destructive succeed when it should have failed."
+        exit 1
+      fi
+    - echo "ruff_destructive failed as expected."
+  needs:
+    - job: ruff_destructive
+      artifacts: true

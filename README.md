@@ -1,4 +1,4 @@
-# Ruff template
+# Ruff CI/CD job
 
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/main/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
@@ -6,46 +6,47 @@
 
 ## Objective
 
-Run [Ruff](https://github.com/astral-sh/ruff), an extremely fast Python linter, on your
-Python code. This tool is written in Rust, and it is designed to quickly analyze your
-Python code to detect various syntax and stylistic errors.
-
-!!! warning If you use the venv template, make sure to include it after the ruff
-template to reset its configuration to default. Otherwise, you can include this in your
-`.gitlab-ci.yml` file to reset the configuration:
-```yaml
-# Reset the venv template configuration
-venv:
-   rules:
-        -   when: null
-```
+Run [Ruff](https://github.com/astral-sh/ruff), an extremely fast Python linter, on your Python code.
 
 ## How to use it
 
-1. Configure the `pyproject.toml` file in your repository's root directory with your
-   desired rules.
-2. Include the Ruff template in your GitLab CI/CD configuration.
-3. If you need to customize the job, refer to
-   the [jobs customization](https://docs.r2devops.io/get-started/use-templates/#job-templates-customization)
-   documentation.
+1. [Configure ruff](https://docs.astral.sh/ruff/configuration/) for your project
+2. Include the ruff component in your CI/CD pipeline
 
-## Variables
+### GitLab
 
-| Name           | Description                             | Default                    |
-|----------------|-----------------------------------------|----------------------------|
-| `IMAGE_NAME`   | The default name for the docker image.  | `"python"`                 |
-| `IMAGE_TAG`    | The default tag for the docker image.   | `"latest"`                 |
-| `IMAGE`        | The default docker image name.          | `"$IMAGE_NAME:$IMAGE_TAG"` |
-| `PROJECT_PATH` | The path to the project root directory. | `"."`                      |
-| `RUFF_CHECK`   | The command to run Ruff check.          | `"ruff check"`             |
-| `RUFF_FORMAT`  | The command to run Ruff format.         | `"ruff format --check"`    |
+Add the following to your `.gitlab-ci.yml` file:
 
-### Global Configuration of Ruff
+```yaml
+include:
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@2.0.0
+```
 
-To add configuration to `ruff` that is shared with any other usage of Ruff (such as
-manual run, pre-commit, etc), you can use a `pyproject.toml`, `ruff.toml`,
-or `.ruff.toml` configuration file in your project's root directory. Learn more
-about [ruff configuration](https://beta.ruff.rs/docs/configuration/) files.
+[![Supported by GitLab.com](https://img.shields.io/badge/Supported_by-GitLab.com-orange)](https://gitlab.com)
+[![Supported by Frogg.it](https://img.shields.io/badge/Supported_by-Frogg.it-green)](https://froggit.fr/)
+
+See more for GitLab here: [docs/gitlab.md](docs/gitlab.md).
+
+### GitHub
+
+Add the following to your `.github/workflows/lint.yml` file (or any other workflow name).
+
+```yaml
+name: Lint
+
+on: [ push ]
+
+jobs:
+  ruff:
+    runs-on: ubuntu-latest
+    container:
+      image: swepy/ruff:latest
+      options: --user root
+    steps:
+      - uses: SWEPY-org/ruff@2.0.0
+```
+
+See more for GitHub here: [docs/github.md](docs/github.md).
 
 ## Add an official [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff) badge to your project README.md
 
