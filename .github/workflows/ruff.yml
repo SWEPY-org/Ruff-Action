@@ -12,9 +12,19 @@ jobs:
       image: swepy/ruff:latest
       options: --user root
     steps:
-        uses: SWEPY-org/Ruff-Action@trunk
+      - uses: SWEPY-org/Ruff-Action@trunk
         with:
-          project_path: 'tests/ruff_project'
+          target_paths: 'tests/ruff_project'
+
+  ruff_many_folder:
+    runs-on: ubuntu-latest
+    container:
+      image: swepy/ruff:latest
+      options: --user root
+    steps:
+      - uses: SWEPY-org/Ruff-Action@trunk
+        with:
+          target_paths: 'tests/ruff_project/src tests/ruff_project/tests'
 
   ruff_destructive:
     runs-on: ubuntu-latest
@@ -27,7 +37,7 @@ jobs:
       - name: Run Ruff on destructive_project
         uses: SWEPY-org/Ruff-Action@trunk
         with:
-          project_path: 'tests/ruff_destructive_project'
+          target_paths: 'tests/ruff_destructive_project'
       - name: Check job status
         if: ${{ always() }}
         run: |
