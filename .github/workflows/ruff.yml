@@ -12,7 +12,7 @@ jobs:
       image: swepy/ruff:latest
       options: --user root
     steps:
-      - uses: SWEPY-org/ruff@trunk
+        uses: SWEPY-org/Ruff-Action@trunk
         with:
           project_path: 'tests/ruff_project'
 
@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Ruff on destructive_project
-        uses: SWEPY-org/ruff@trunk
+        uses: SWEPY-org/Ruff-Action@trunk
         with:
           project_path: 'tests/ruff_destructive_project'
       - name: Check job status
