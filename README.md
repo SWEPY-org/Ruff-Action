@@ -6,7 +6,7 @@
 
 ## Objective
 
-Run [Ruff](https://github.com/astral-sh/ruff) CI job, an extremely fast Python linter, on your Python code.
+Run [Ruff](https://github.com/astral-sh/ruff), an extremely fast Python linter, on your Python code.
 
 ## How to use it
 

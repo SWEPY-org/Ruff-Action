@@ -6,32 +6,62 @@ include:
     inputs:
       target_paths: tests/ruff_project
 
-ruff_many_folder:
-  extends: ruff
+ruff_check_many_folder:
+  extends: ruff_check
   variables:
     TARGET_PATHS: tests/ruff_project/src tests/ruff_project/tests
 
-ruff_destructive:
-  extends: ruff
+ruff_format_many_folder:
+  extends: ruff_format
+  variables:
+    TARGET_PATHS: tests/ruff_project/src tests/ruff_project/tests
+
+ruff_check_destructive:
+  extends: ruff_check
   variables:
     TARGET_PATHS: tests/ruff_destructive_project
   after_script:
     - echo "The job is run on a poorly written project and must fail."
-    - echo $CI_JOB_STATUS > ci_job_status.txt
+    - echo $CI_JOB_STATUS > ci_job_status_check.txt
   artifacts:
     paths:
       - ci_job_status.txt
   allow_failure: true
 
-ruff_destructive_check:
+ruff_format_destructive:
+  extends: ruff_format
+  variables:
+    TARGET_PATHS: tests/ruff_destructive_project
+  after_script:
+    - echo "The job is run on a poorly written project and must fail."
+    - echo $CI_JOB_STATUS > ci_job_status_format.txt
+  artifacts:
+    paths:
+      - ci_job_status.txt
+  allow_failure: true
+
+ruff_check_destructive_verify:
   stage: test
   script:
     - >
-      if grep -q "success" "ci_job_status.txt"; then
+      if grep -q "success" "ci_job_status_check.txt"; then
         echo "ruff_destructive succeed when it should have failed."
         exit 1
       fi
     - echo "ruff_destructive failed as expected."
   needs:
-    - job: ruff_destructive
+    - job: ruff_check_destructive
+      artifacts: true
+
+ruff_format_destructive_verify:
+  stage: test
+  script:
+    - >
+      if grep -q "success" "ci_job_status_format.txt"; then
+        echo "ruff_destructive succeed when it should have failed."
+        exit 1
+      fi
+    - echo "ruff_destructive failed as expected."
+  needs:
+    - job: ruff_format_destructive
       artifacts: true

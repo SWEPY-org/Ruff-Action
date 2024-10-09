@@ -11,14 +11,21 @@ spec:
             default: '0'
 
 ---
-ruff:
+ruff_check:
     variables:
         TARGET_PATHS: $[[ inputs.target_paths ]]
         RUFF_VERSION: $[[ inputs.ruff_version ]]
         RUFF_CHECK_OPTIONS: ""
-        RUFF_FORMAT_OPTIONS: --check
     image: swepy/ruff:$RUFF_VERSION
     stage: $[[ inputs.stage ]]
     script:
         - ruff check $RUFF_CHECK_OPTIONS $TARGET_PATHS
+ruff_format:
+    variables:
+        TARGET_PATHS: $[[ inputs.target_paths ]]
+        RUFF_VERSION: $[[ inputs.ruff_version ]]
+        RUFF_FORMAT_OPTIONS: --check
+    image: swepy/ruff:$RUFF_VERSION
+    stage: $[[ inputs.stage ]]
+    script:
         - ruff format $RUFF_FORMAT_OPTIONS $TARGET_PATHS
