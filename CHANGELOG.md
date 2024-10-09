@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/trunk/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
 
+## [3.0.0] - 2024-10-09
+
+[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/3.0.0/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+
 ### Changed
 
 * `ruff` job split into `ruff_check` and `ruff_format` jobs
