@@ -6,12 +6,12 @@
 
 ## Objective
 
-Run [Ruff](https://github.com/astral-sh/ruff), an extremely fast Python linter, on your Python code.
+Run [Ruff](https://github.com/astral-sh/ruff) CI job, an extremely fast Python linter, on your Python code.
 
 ## How to use it
 
 1. [Configure ruff](https://docs.astral.sh/ruff/configuration/) for your project
-2. Include the ruff component in your CI/CD pipeline
+2. Include the ruff component in your CI/CD pipeline (GitLab/GitHub compatible)
 
 ### GitLab
 
@@ -29,24 +29,27 @@ See more for GitLab here: [docs/gitlab.md](docs/gitlab.md).
 
 ### GitHub
 
-Add the following to your `.github/workflows/lint.yml` file (or any other workflow name).
+Add the following jobs to your `.github/workflows` lint file:
 
 ```yaml
-name: Lint
-
-on: [ push ]
-
 jobs:
-  ruff:
+  ruff_check:
     runs-on: ubuntu-latest
-    container:
-      image: swepy/ruff:latest
-      options: --user root
     steps:
-      - uses: SWEPY-org/ruff@2.0.0
+      - uses: actions/checkout@v4
+      - name: ruff check
+        uses: astral-sh/ruff-action@v1
+  ruff_format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: ruff format
+        uses: astral-sh/ruff-action@v1
+        with:
+          args: "format --check"
 ```
 
-See more for GitHub here: [docs/github.md](docs/github.md).
+See more for GitHub here: [github/marketplace/ruff-action](https://github.com/marketplace/actions/ruff-action).
 
 ## Add an official [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff) badge to your project README.md
 
