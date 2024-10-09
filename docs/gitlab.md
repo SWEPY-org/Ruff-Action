@@ -4,13 +4,13 @@
 
 Include the job as a Component if it is supported
 or [mirrored](https://docs.gitlab.com/ee/user/project/repository/mirror/pull.html) by
-your instance.
+your instance. This will include two jobs, one for `ruff check` and one for `ruff format`.
 
 Add the following to your `.gitlab-ci.yml` file:
 
 ```yaml
 include:
-  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@2.0.0
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@3.0.0
 ```
 
 [![Supported by GitLab.com](https://img.shields.io/badge/Supported_by-GitLab.com-orange)](https://gitlab.com)
@@ -30,7 +30,7 @@ For example:
 
 ```yml
 include:
-  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@2.0.0
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@3.0.0
     inputs:
       target_paths: "src tests dev/scripts"
       stage: lint
@@ -50,9 +50,22 @@ For example:
 
 ```yaml
 include:
-  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@2.0.0
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@3.0.0
 
-ruff:
+ruff_check:
   variables:
     RUFF_CHECK_OPTIONS: "--select F401"
+```
+
+## Disable one of the two jobs
+
+To disable one job or the other, you can add a rule:
+
+```yml
+include:
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@3.0.0
+
+ruff_format:
+  rules:
+    - when: never  # or `manual`
 ```
