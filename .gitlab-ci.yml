@@ -6,12 +6,12 @@ include:
     inputs:
       target_paths: tests/ruff_project
 
-ruff_check_many_folder:
+ruff.check_many_folder:
   extends: ruff_check
   variables:
     TARGET_PATHS: tests/ruff_project/src tests/ruff_project/tests
 
-ruff_format_many_folder:
+ruff.format_many_folder:
   extends: ruff_format
   variables:
     TARGET_PATHS: tests/ruff_project/src tests/ruff_project/tests
