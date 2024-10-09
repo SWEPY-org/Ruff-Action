@@ -28,7 +28,4 @@ search = """## [Unreleased]
 filename = "README.md"
 
 [[tool.bumpversion.files]]
-filename = "docs/github.md"
-
-[[tool.bumpversion.files]]
 filename = "docs/gitlab.md"
