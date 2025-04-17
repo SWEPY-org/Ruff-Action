@@ -27,6 +27,7 @@ ruff_check:
     - ruff check $RUFF_CHECK_OPTIONS $TARGET_PATHS
 
 ruff_format:
+  extends: .ruff
   variables:
     RUFF_FORMAT_OPTIONS: --check
   script:
