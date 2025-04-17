@@ -8,7 +8,8 @@ spec:
       default: .
     ruff_version:
       description: The version of ruff to be use.
-      default: 0.11
+      default: "0.11"
+      type: string  # required as later inserted into text
 
 ---
 .ruff:
