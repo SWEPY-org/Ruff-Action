@@ -1,31 +1,32 @@
 spec:
-    inputs:
-        stage:
-            description: The stage of the job.
-            default: test
-        target_paths:
-            description: Paths to directories to lint.
-            default: .
-        ruff_version:
-            description: The version of ruff to be use.
-            default: '0'
+  inputs:
+    stage:
+      description: The stage of the job.
+      default: test
+    target_paths:
+      description: Paths to directories to lint.
+      default: .
+    ruff_version:
+      description: The version of ruff to be use.
+      default: 0.11
 
 ---
+.ruff:
+  variables:
+    TARGET_PATHS: $[[ inputs.target_paths ]]
+    RUFF_VERSION: $[[ inputs.ruff_version ]]
+  image: ghcr.io/astral-sh/ruff:{$RUFF_VERSION}-alpine
+  stage: $[[ inputs.stage ]]
+
 ruff_check:
-    variables:
-        TARGET_PATHS: $[[ inputs.target_paths ]]
-        RUFF_VERSION: $[[ inputs.ruff_version ]]
-        RUFF_CHECK_OPTIONS: ""
-    image: swepy/ruff:$RUFF_VERSION
-    stage: $[[ inputs.stage ]]
-    script:
-        - ruff check $RUFF_CHECK_OPTIONS $TARGET_PATHS
+  extends: .ruff
+  variables:
+    RUFF_CHECK_OPTIONS: ""
+  script:
+    - ruff check $RUFF_CHECK_OPTIONS $TARGET_PATHS
+
 ruff_format:
-    variables:
-        TARGET_PATHS: $[[ inputs.target_paths ]]
-        RUFF_VERSION: $[[ inputs.ruff_version ]]
-        RUFF_FORMAT_OPTIONS: --check
-    image: swepy/ruff:$RUFF_VERSION
-    stage: $[[ inputs.stage ]]
-    script:
-        - ruff format $RUFF_FORMAT_OPTIONS $TARGET_PATHS
+  variables:
+    RUFF_FORMAT_OPTIONS: --check
+  script:
+    - ruff format $RUFF_FORMAT_OPTIONS $TARGET_PATHS
