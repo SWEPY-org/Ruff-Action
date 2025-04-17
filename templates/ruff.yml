@@ -16,7 +16,7 @@ spec:
   variables:
     TARGET_PATHS: $[[ inputs.target_paths ]]
     RUFF_VERSION: $[[ inputs.ruff_version ]]
-  image: ghcr.io/astral-sh/ruff:{$RUFF_VERSION}-alpine
+  image: ghcr.io/astral-sh/ruff:${RUFF_VERSION}-alpine
   stage: $[[ inputs.stage ]]
 
 ruff_check:
