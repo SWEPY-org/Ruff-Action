@@ -10,7 +10,7 @@ Add the following to your `.gitlab-ci.yml` file:
 
 ```yaml
 include:
-  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@3.0.0
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@4.0.0
 ```
 
 [![Supported by GitLab.com](https://img.shields.io/badge/Supported_by-GitLab.com-orange)](https://gitlab.com)
@@ -20,21 +20,21 @@ include:
 
 You can customize the job by overriding specific inputs.
 
-| Name           | Description                    | Default    |
-|----------------|--------------------------------|------------|
-| `target_paths` | Paths to directories to lint.  | `"."`      |
-| `stage`        | The stage of the job.          | `test`     |
-| `ruff_version` | The version of ruff to be use. | `"latest"` |
+| Name           | Description                    | Default  |
+|----------------|--------------------------------|----------|
+| `target_paths` | Paths to directories to lint.  | `"."`    |
+| `stage`        | The stage of the job.          | `test`   |
+| `ruff_version` | The version of ruff to be use. | `"0.11"` |
 
 For example:
 
 ```yml
 include:
-  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@3.0.0
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@4.0.0
     inputs:
       target_paths: "src tests dev/scripts"
       stage: lint
-      ruff_version: 0.5.0
+      ruff_version: 0.11.6
 ```
 
 ## Customize with variables
@@ -50,7 +50,7 @@ For example:
 
 ```yaml
 include:
-  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@3.0.0
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@4.0.0
 
 ruff_check:
   variables:
@@ -63,7 +63,7 @@ To disable one job or the other, you can add a rule:
 
 ```yml
 include:
-  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@3.0.0
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@4.0.0
 
 ruff_format:
   rules:

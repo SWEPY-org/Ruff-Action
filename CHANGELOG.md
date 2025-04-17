@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/trunk/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
 
+## [4.0.0] - 2025-04-17
+
+[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/4.0.0/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+
+### Changed
+
+* ruff_version default now to "0.11"
+* image now point to official ghcr.io/astral-sh/ruff:{$RUFF_VERSION}-alpine
+* Copyright now range up to 2025
+
 ## [3.0.0] - 2024-10-09
 
 [![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/3.0.0/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
