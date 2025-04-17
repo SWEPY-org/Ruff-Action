@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-* ruff_version default now to "0.11
+* ruff_version default now to "0.11"
 * image now point to official ghcr.io/astral-sh/ruff:{$RUFF_VERSION}-alpine
 * Copyright now range up to 2025
 
