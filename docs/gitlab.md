@@ -20,11 +20,11 @@ include:
 
 You can customize the job by overriding specific inputs.
 
-| Name           | Description                    | Default    |
-|----------------|--------------------------------|------------|
-| `target_paths` | Paths to directories to lint.  | `"."`      |
-| `stage`        | The stage of the job.          | `test`     |
-| `ruff_version` | The version of ruff to be use. | `"latest"` |
+| Name           | Description                    | Default  |
+|----------------|--------------------------------|----------|
+| `target_paths` | Paths to directories to lint.  | `"."`    |
+| `stage`        | The stage of the job.          | `test`   |
+| `ruff_version` | The version of ruff to be use. | `"0.11"` |
 
 For example:
 
@@ -34,7 +34,7 @@ include:
     inputs:
       target_paths: "src tests dev/scripts"
       stage: lint
-      ruff_version: 0.5.0
+      ruff_version: 0.11.6
 ```
 
 ## Customize with variables
