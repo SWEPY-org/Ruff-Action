@@ -10,25 +10,33 @@ spec:
       description: The version of ruff to be use.
       default: "0.11"
       type: string  # required as later inserted into text
+    ruff_global_options:
+      description: Global options for both format and check commands.
+      default: ""
+      type: string
 
 ---
+
 .ruff:
   variables:
     TARGET_PATHS: $[[ inputs.target_paths ]]
     RUFF_VERSION: $[[ inputs.ruff_version ]]
+    RUFF_GLOBAL_OPTIONS: $[[ inputs.ruff_global_options ]]
   image: ghcr.io/astral-sh/ruff:${RUFF_VERSION}-alpine
   stage: $[[ inputs.stage ]]
 
 ruff_check:
   extends: .ruff
   variables:
+    RUFF_CHECK_DEFAULT_OPTIONS: ""
     RUFF_CHECK_OPTIONS: ""
   script:
-    - ruff check $RUFF_CHECK_OPTIONS $TARGET_PATHS
+    - ruff check $RUFF_GLOBAL_OPTIONS $RUFF_CHECK_DEFAULT_OPTIONS $RUFF_CHECK_OPTIONS $TARGET_PATHS
 
 ruff_format:
   extends: .ruff
   variables:
-    RUFF_FORMAT_OPTIONS: --check
+    RUFF_FORMAT_DEFAULT_OPTIONS: --check
+    RUFF_FORMAT_OPTIONS: ""
   script:
-    - ruff format $RUFF_FORMAT_OPTIONS $TARGET_PATHS
+    - ruff format $RUFF_GLOBAL_OPTIONS $RUFF_FORMAT_DEFAULT_OPTIONS $RUFF_FORMAT_OPTIONS $TARGET_PATHS
