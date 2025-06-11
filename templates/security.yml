@@ -1,0 +1,30 @@
+spec:
+  inputs:
+    stage:
+      description: The stage of the job.
+      default: test
+    target_paths:
+      description: Paths to directories to lint.
+      default: .
+    ruff_version:
+      description: The version of ruff to be use.
+      default: "0.11"
+      type: string  # required as later inserted into text
+    ruff_global_options:
+      description: Global options for both format and check commands.
+      default: ""
+      type: string
+
+---
+
+include:
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@4.0.0
+    inputs:
+      ruff_version: $[[ inputs.ruff_version ]]
+      stage: $[[ inputs.stage ]]
+      target_paths: $[[ inputs.target_paths ]]
+      ruff_global_options: $[[ inputs.ruff_global_options ]]
+
+ruff_check:
+  variables:
+    RUFF_CHECK_OPTIONS: --select S,PGH
