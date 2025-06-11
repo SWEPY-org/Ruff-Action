@@ -6,39 +6,45 @@ include:
     inputs:
       target_paths: tests/ruff_project
 
-ruff_check_many_folder:
-  extends: ruff_check
+.many_folder:
   variables:
     TARGET_PATHS: tests/ruff_project/src tests/ruff_project/tests
+
+ruff_check_many_folder:
+  extends:
+    - ruff_check
+    - .many_folder
 
 ruff_format_many_folder:
-  extends: ruff_format
+  extends:
+    - ruff_format
+    - .many_folder
+
+.negative:
   variables:
-    TARGET_PATHS: tests/ruff_project/src tests/ruff_project/tests
+    TARGET_PATHS: tests/ruff_negative_project
+    OUTPUT_FILE: ""  # Required
+  after_script:
+    - echo "The job is run on a poorly written project and must fail."
+    - echo $CI_JOB_STATUS > $OUTPUT_FILE
+  artifacts:
+    paths:
+      - $OUTPUT_FILE
+  allow_failure: true
 
 ruff_check_negative:
-  extends: ruff_check
+  extends:
+    - ruff_check
+    - .negative
   variables:
-    TARGET_PATHS: tests/ruff_negative_project
-  after_script:
-    - echo "The job is run on a poorly written project and must fail."
-    - echo $CI_JOB_STATUS > ci_job_status_check.txt
-  artifacts:
-    paths:
-      - ci_job_status.txt
-  allow_failure: true
+    OUTPUT_FILE: ci_job_status_check.txt
 
 ruff_format_negative:
-  extends: ruff_format
+  extends:
+    - ruff_format
+    - .negative
   variables:
-    TARGET_PATHS: tests/ruff_negative_project
-  after_script:
-    - echo "The job is run on a poorly written project and must fail."
-    - echo $CI_JOB_STATUS > ci_job_status_format.txt
-  artifacts:
-    paths:
-      - ci_job_status.txt
-  allow_failure: true
+    OUTPUT_FILE: ci_job_status_format.txt
 
 ruff_check_negative_verify:
   stage: test
