@@ -33,7 +33,7 @@ spec:
   before_script:
     - ruff --version
 
-ruff_check:
+ruff:check:
   extends: .ruff
   variables:
     RUFF_CHECK_DEFAULT_OPTIONS: $[[ inputs.check-options ]]
@@ -44,7 +44,7 @@ ruff_check:
     reports:
       codequality: $CI_PROJECT_DIR/code-quality-report.json
 
-ruff_format:
+ruff:format:
   extends: .ruff
   variables:
     RUFF_FORMAT_DEFAULT_OPTIONS: $[[ inputs.format-options ]]
