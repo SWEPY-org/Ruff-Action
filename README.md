@@ -1,8 +1,8 @@
 # Ruff CI/CD job
 
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/main/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/blob/main/LICENSE)
+[![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/main/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/blob/main/LICENSE)
 
 ## Objective
 

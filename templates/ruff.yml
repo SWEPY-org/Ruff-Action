@@ -1,42 +1,46 @@
 spec:
   inputs:
+    image:
+      description: "Image for the job."
+      default: ghcr.io/astral-sh/ruff:0.12.2-alpine3.21
+      regex: ^(?<image>[a-z0-9.\-_]+(?:/[a-z0-9.\-_]+|)+)(:(?<tag>[\w.\-_]{1,127})|)$
     stage:
-      description: The stage of the job.
+      description: Stage of the job.
       default: test
-    target_paths:
-      description: Paths to directories to lint.
+    target-paths:
+      description: Directories to lint.
       default: .
-    ruff_version:
-      description: The version of ruff to be use.
-      default: "0.11"
-      type: string  # required as later inserted into text
-    ruff_global_options:
-      description: Global options for both format and check commands.
+    options:
+      description: Options for both format and check commands.
       default: ""
-      type: string
+    check-options:
+      description: Options for check command.
+      default: ""
+    format-options:
+      description: Options for format command.
+      default: --check
 
 ---
 
 .ruff:
   variables:
-    TARGET_PATHS: $[[ inputs.target_paths ]]
-    RUFF_VERSION: $[[ inputs.ruff_version ]]
-    RUFF_GLOBAL_OPTIONS: $[[ inputs.ruff_global_options ]]
-  image: ghcr.io/astral-sh/ruff:${RUFF_VERSION}-alpine
+    RUFF_TARGET_PATHS: $[[ inputs.target-paths ]]
+    RUFF_OPTIONS: $[[ inputs.options ]]
+  image: $[[ inputs.image ]]
   stage: $[[ inputs.stage ]]
 
 ruff_check:
   extends: .ruff
   variables:
-    RUFF_CHECK_DEFAULT_OPTIONS: ""
+    RUFF_CHECK_DEFAULT_OPTIONS: $[[ inputs.check-options ]]
     RUFF_CHECK_OPTIONS: ""
   script:
-    - ruff check $RUFF_GLOBAL_OPTIONS $RUFF_CHECK_DEFAULT_OPTIONS $RUFF_CHECK_OPTIONS $TARGET_PATHS
+    - ruff check $RUFF_OPTIONS $RUFF_CHECK_DEFAULT_OPTIONS $RUFF_CHECK_OPTIONS $RUFF_TARGET_PATHS
 
 ruff_format:
   extends: .ruff
   variables:
-    RUFF_FORMAT_DEFAULT_OPTIONS: --check
+    RUFF_FORMAT_DEFAULT_OPTIONS: $[[ inputs.format-options ]]
     RUFF_FORMAT_OPTIONS: ""
   script:
-    - ruff format $RUFF_GLOBAL_OPTIONS $RUFF_FORMAT_DEFAULT_OPTIONS $RUFF_FORMAT_OPTIONS $TARGET_PATHS
+    - ruff format $RUFF_GLOBAL_OPTIONS $RUFF_FORMAT_DEFAULT_OPTIONS $RUFF_FORMAT_OPTIONS $RUFF_TARGET_PATHS

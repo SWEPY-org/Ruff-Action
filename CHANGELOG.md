@@ -7,11 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/trunk/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+[![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/trunk/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
+
+### Added
+
+* inputs:
+  * `image` used by the job, default to `ghcr.io/astral-sh/ruff:0.12.2-alpine3.21`
+  * `check-options` for check command, default to `""`
+  * `format-options` for format command, default to `--check`
+
+### Changed
+
+* inputs:
+  * `target_paths` -> `target-paths`
+  * `ruff_global_options` -> `options`
+* variables:
+  * `TARGET_PATHS` -> `RUFF_TARGET_PATHS`
+  * `RUFF_CHECK_DEFAULT_OPTIONS` changed default to `$[[ inputs.check-options ]]`
+  * `RUFF_FORMAT_DEFAULT_OPTIONS` changed default to `$[[ inputs.format-options ]]`
+
+### Removed
+
+* inputs:
+  * `ruff_version`
+* variables:
+  * `RUFF_VERSION`
 
 ## [4.0.0] - 2025-04-17
 
-[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/4.0.0/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+[![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/4.0.0/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
 
 ### Changed
 
@@ -21,7 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.0] - 2024-10-09
 
-[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/3.0.0/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+[![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/3.0.0/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
 
 ### Changed
 
@@ -33,7 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.0] - 2024-10-07
 
-[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/2.0.0/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+[![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/2.0.0/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
 
 * A new test that ensure that the job fails on miss-formated projects
 
@@ -48,7 +72,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.2] - 2024-04-09
 
-[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/ruff@1.0.2/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+[![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/ruff@1.0.2/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
 
 ### Fixed
 
@@ -56,7 +80,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.1] - 2024-04-06
 
-[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/ruff@1.0.1/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+[![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/ruff@1.0.1/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
 
 ### Changed
 
@@ -65,7 +89,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2024-04-06
 
-[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/ruff@1.0.0/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+[![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/ruff@1.0.0/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
 
 ### Changed
 
@@ -74,7 +98,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] - 2024-04-06
 
-[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/ruff@0.2.0/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+[![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/ruff@0.2.0/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
 
 ### Added
 
@@ -83,6 +107,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2024-04-05
 
-[![Pipeline](https://lab.frogg.it/swepy/cicd-templates/ruff/badges/ruff@0.1.0/pipeline.svg)](https://lab.frogg.it/swepy/cicd-templates/ruff/-/pipelines)
+[![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/ruff@0.1.0/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
 
 * Initial version

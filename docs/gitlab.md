@@ -2,10 +2,6 @@
 
 ## Include the component
 
-Include the job as a Component if it is supported
-or [mirrored](https://docs.gitlab.com/ee/user/project/repository/mirror/pull.html) by
-your instance. This will include two jobs, one for `ruff check` and one for `ruff format`.
-
 Add the following to your `.gitlab-ci.yml` file:
 
 ```yaml
@@ -16,15 +12,18 @@ include:
 [![Supported by GitLab.com](https://img.shields.io/badge/Supported_by-GitLab.com-orange)](https://gitlab.com)
 [![Supported by Frogg.it](https://img.shields.io/badge/Supported_by-Frogg.it-green)](https://froggit.fr/)
 
-### Inputs
+### Component inputs
 
-You can customize the job by overriding specific inputs.
-
-| Name           | Description                    | Default  |
-|----------------|--------------------------------|----------|
-| `target_paths` | Paths to directories to lint.  | `"."`    |
-| `stage`        | The stage of the job.          | `test`   |
-| `ruff_version` | The version of ruff to be use. | `"0.11"` |
+| Name                                           | Description                        | Default                                    |
+|------------------------------------------------|------------------------------------|--------------------------------------------|
+| `image`                                        | Image for the job.                 | `ghcr.io/astral-sh/ruff:0.12.2-alpine3.21` |
+| `stage`                                        | Stage of the job.                  | `test`                                     |
+| `target-paths`/`TARGET_PATHS`                  | Directories to lint.               | `.`                                        |
+| `options`/`RUFF_OPTIONS`                       | For both format and check commands | `""`                                       |
+| `check-options`/`RUFF_CHECK_DEFAULT_OPTIONS`   | For all check jobs                 | `""`                                       |
+| `format-options`/`RUFF_FORMAT_DEFAULT_OPTIONS` | For all format jobs                | `--check`                                  |
+| `RUFF_CHECK_OPTIONS`                           | For specific check job             | `""`                                       |
+| `RUFF_FORMAT_OPTIONS`                          | For specific format job            | `""`                                       |
 
 For example:
 
@@ -32,9 +31,8 @@ For example:
 include:
   - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@4.0.0
     inputs:
-      target_paths: "src tests dev/scripts"
+      target-paths: "src tests dev/scripts"
       stage: lint
-      ruff_version: 0.11.6
 ```
 
 ## Customize with variables
