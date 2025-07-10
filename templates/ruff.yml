@@ -15,7 +15,7 @@ spec:
       default: ""
     check-options:
       description: Options for check command.
-      default: ""
+      default: --output-format gitlab
     format-options:
       description: Options for format command.
       default: --check
@@ -36,7 +36,10 @@ ruff_check:
     RUFF_CHECK_DEFAULT_OPTIONS: $[[ inputs.check-options ]]
     RUFF_CHECK_OPTIONS: ""
   script:
-    - ruff check $RUFF_OPTIONS $RUFF_CHECK_DEFAULT_OPTIONS $RUFF_CHECK_OPTIONS $RUFF_TARGET_PATHS
+    - ruff check $RUFF_OPTIONS $RUFF_CHECK_DEFAULT_OPTIONS $RUFF_CHECK_OPTIONS $RUFF_TARGET_PATHS  > $CI_PROJECT_DIR/code-quality-report.json
+  artifacts:
+    reports:
+      codequality: $CI_PROJECT_DIR/code-quality-report.json
 
 ruff_format:
   extends: .ruff
