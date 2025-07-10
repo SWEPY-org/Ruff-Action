@@ -30,6 +30,8 @@ spec:
   interruptible: true
   stage: $[[ inputs.stage ]]
   needs: []
+  before_script:
+    - ruff --version
 
 ruff_check:
   extends: .ruff
