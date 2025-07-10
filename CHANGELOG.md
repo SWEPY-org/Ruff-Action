@@ -13,18 +13,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * inputs:
   * `image` used by the job, default to `ghcr.io/astral-sh/ruff:0.12.2-alpine3.21`
-  * `check-options` for check command, default to `""`
-  * `format-options` for format command, default to `--check`
+  * `check-options` for check command, default to `--output-format gitlab`
+  * `format-options` for format command, default to `--diff`
 
 ### Changed
 
 * inputs:
-  * `target_paths` -> `target-paths`
-  * `ruff_global_options` -> `options`
+  * `target_paths` renamed `target-paths`
+  * `ruff_global_options` renamed `options`
 * variables:
-  * `TARGET_PATHS` -> `RUFF_TARGET_PATHS`
+  * `TARGET_PATHS` renamed `RUFF_TARGET_PATHS`
   * `RUFF_CHECK_DEFAULT_OPTIONS` changed default to `$[[ inputs.check-options ]]`
   * `RUFF_FORMAT_DEFAULT_OPTIONS` changed default to `$[[ inputs.format-options ]]`
+* `ruff_check`:
+  * renamed `ruff:check`
+  * now create an artefact `code-quality-report.json` used by gitlab
+* `ruff_format` renamed `ruff:format`
 
 ### Removed
 
