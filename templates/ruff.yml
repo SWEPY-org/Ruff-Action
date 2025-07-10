@@ -27,6 +27,7 @@ spec:
     RUFF_TARGET_PATHS: $[[ inputs.target-paths ]]
     RUFF_OPTIONS: $[[ inputs.options ]]
   image: $[[ inputs.image ]]
+  interruptible: true
   stage: $[[ inputs.stage ]]
   needs: []
 
