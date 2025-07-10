@@ -1,21 +1,21 @@
 include:
   - component: $CI_SERVER_FQDN/swepy/cicd-templates/release-by-changelog/release-on-tag@2.0.0
-  - project: swepy/cicd-templates/ruff
-    ref: $CI_COMMIT_REF_NAME
+  - project: $CI_PROJECT_NAMESPACE/ruff
+    ref: $CI_COMMIT_SHA
     file: templates/ruff.yml
     inputs:
-      target_paths: tests/ruff_project
+      target-paths: tests/ruff_project
 
 .many_folder:
   variables:
-    TARGET_PATHS: tests/ruff_project/src tests/ruff_project/tests
+    RUFF_TARGET_PATHS: tests/ruff_project/src tests/ruff_project/tests
 
 ruff_check_many_folder:
   extends:
-    - ruff_check
+    - ruff:check
     - .many_folder
 
 ruff_format_many_folder:
   extends:
-    - ruff_format
+    - ruff:format
     - .many_folder
