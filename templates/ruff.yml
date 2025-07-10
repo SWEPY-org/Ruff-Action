@@ -28,6 +28,7 @@ spec:
     RUFF_OPTIONS: $[[ inputs.options ]]
   image: $[[ inputs.image ]]
   stage: $[[ inputs.stage ]]
+  needs: []
 
 ruff_check:
   extends: .ruff
