@@ -22,7 +22,7 @@ spec:
 
 ---
 
-.ruff:
+.ruff-base:
   variables:
     RUFF_TARGET_PATHS: $[[ inputs.target-paths ]]
     RUFF_OPTIONS: $[[ inputs.options ]]
@@ -33,8 +33,8 @@ spec:
   before_script:
     - ruff --version
 
-ruff:check:
-  extends: .ruff
+lint:ruff:check:
+  extends: .ruff-base
   variables:
     RUFF_CHECK_DEFAULT_OPTIONS: $[[ inputs.check-options ]]
     RUFF_CHECK_OPTIONS: ""
@@ -44,8 +44,8 @@ ruff:check:
     reports:
       codequality: $CI_PROJECT_DIR/code-quality-report.json
 
-ruff:format:
-  extends: .ruff
+lint:ruff:format:
+  extends: .ruff-base
   variables:
     RUFF_FORMAT_DEFAULT_OPTIONS: $[[ inputs.format-options ]]
     RUFF_FORMAT_OPTIONS: ""

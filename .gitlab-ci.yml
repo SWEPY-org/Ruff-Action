@@ -7,16 +7,16 @@ include:
     inputs:
       target-paths: tests/ruff_project
 
-.many_folder:
+.many-folder-base:
   variables:
     RUFF_TARGET_PATHS: tests/ruff_project/src tests/ruff_project/tests
 
-ruff_check_many_folder:
+lint:ruff:check:many-folder:
   extends:
-    - ruff:check
-    - .many_folder
+    - lint:ruff:check
+    - .many-folder-base
 
-ruff_format_many_folder:
+lint:ruff:format:many-folder:
   extends:
-    - ruff:format
-    - .many_folder
+    - lint:ruff:format
+    - .many-folder-base

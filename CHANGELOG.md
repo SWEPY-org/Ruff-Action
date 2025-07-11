@@ -9,12 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/trunk/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
 
+### Changed
+
+* jobs names:
+  * `ruff:check` -> `lint:ruff:check`
+  * `ruff:format` -> `lint:ruff:format`
+  * `.ruff` -> `.ruff-base`
+
 ## [5.0.0] - 2025-07-10
 
 [![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/5.0.0/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
 
 ### Added
 
+* both `ruff:check` and `ruff:format` runs as soon as possible, even if build stage is not complete 
 * inputs:
   * `image` used by the job, default to `ghcr.io/astral-sh/ruff:0.12.2-alpine3.21`
   * `check-options` for check command, default to `--output-format gitlab`
