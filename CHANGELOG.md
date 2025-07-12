@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/trunk/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
 
+### Changed
+
+* code-quality-report.json renamed ruff-code-quality-report.json
+
 ## [6.0.0] - 2025-07-11
 
 [![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/6.0.0/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)

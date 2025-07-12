@@ -39,10 +39,10 @@ lint:ruff:check:
     RUFF_CHECK_DEFAULT_OPTIONS: $[[ inputs.check-options ]]
     RUFF_CHECK_OPTIONS: ""
   script:
-    - ruff check $RUFF_OPTIONS $RUFF_CHECK_DEFAULT_OPTIONS $RUFF_CHECK_OPTIONS $RUFF_TARGET_PATHS  > $CI_PROJECT_DIR/code-quality-report.json
+    - ruff check $RUFF_OPTIONS $RUFF_CHECK_DEFAULT_OPTIONS $RUFF_CHECK_OPTIONS $RUFF_TARGET_PATHS  > $CI_PROJECT_DIR/ruff-code-quality-report.json
   artifacts:
     reports:
-      codequality: $CI_PROJECT_DIR/code-quality-report.json
+      codequality: $CI_PROJECT_DIR/ruff-code-quality-report.json
 
 lint:ruff:format:
   extends: .ruff-base
