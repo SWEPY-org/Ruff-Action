@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/trunk/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
 
+### Added
+
+* inputs:
+  * `allow-failure` for allowing job failure, default to `false`
+
 ## [6.0.1] - 2025-07-12
 
 [![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/6.0.1/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
@@ -34,7 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-* both `ruff:check` and `ruff:format` runs as soon as possible, even if build stage is not complete 
+* both `ruff:check` and `ruff:format` runs as soon as possible, even if build stage is not complete
 * inputs:
   * `image` used by the job, default to `ghcr.io/astral-sh/ruff:0.12.2-alpine3.21`
   * `check-options` for check command, default to `--output-format gitlab`

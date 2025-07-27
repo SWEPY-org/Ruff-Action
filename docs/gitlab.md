@@ -24,6 +24,8 @@ include:
 | `format-options`/`RUFF_FORMAT_DEFAULT_OPTIONS` | For all format jobs                | `--check`                                  |
 | `RUFF_CHECK_OPTIONS`                           | For specific check job             | `""`                                       |
 | `RUFF_FORMAT_OPTIONS`                          | For specific format job            | `""`                                       |
+| `allow-failure`                                | Allow failure option.              | `false`                                    |
+
 
 For example:
 

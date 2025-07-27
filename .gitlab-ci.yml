@@ -6,6 +6,7 @@ include:
     file: templates/ruff.yml
     inputs:
       target-paths: tests/ruff_project
+      allow-failure: true
 
 .many-folder-base:
   variables:
@@ -20,3 +21,10 @@ lint:ruff:format:many-folder:
   extends:
     - lint:ruff:format
     - .many-folder-base
+
+lint:ruff:check:allow-failure:
+  extends:
+    - lint:ruff:check
+    - .many-folder-base
+  variables:
+    RUFF_TARGET_PATHS: tests/ruff_negative_project/src

@@ -19,6 +19,10 @@ spec:
     format-options:
       description: Options for format command.
       default: --diff
+    allow-failure:
+      description: Allow failure option.
+      default: false
+      type: boolean
 
 ---
 
