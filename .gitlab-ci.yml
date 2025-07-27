@@ -25,6 +25,5 @@ lint:ruff:format:many-folder:
 lint:ruff:check:allow-failure:
   extends:
     - lint:ruff:check
-    - .many-folder-base
   variables:
     RUFF_TARGET_PATHS: tests/ruff_negative_project/src
