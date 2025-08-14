@@ -30,3 +30,8 @@ filename = "README.md"
 
 [[tool.bumpversion.files]]
 filename = "docs/gitlab.md"
+
+[[tool.bumpversion.files]]
+filename = "templates/ruff.yml"
+replace = "Ruff component version {new_version}"
+search = "Ruff component version {current_version}"
