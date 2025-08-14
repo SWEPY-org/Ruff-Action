@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/trunk/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
 
+## [6.1.0] - 2025-08-14
+
+[![Pipeline](https://gitlab.com/swepy/cicd-templates/ruff/badges/6.1.0/pipeline.svg)](https://gitlab.com/swepy/cicd-templates/ruff/-/pipelines)
+
 ### Added
 
 * display component version

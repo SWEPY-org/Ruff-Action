@@ -19,7 +19,7 @@ Add the following to your `.gitlab-ci.yml` file:
 
 ```yaml
 include:
-  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@6.0.1
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@6.1.0
 ```
 
 [![Supported by GitLab.com](https://img.shields.io/badge/Supported_by-GitLab.com-orange)](https://gitlab.com)
