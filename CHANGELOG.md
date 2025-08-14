@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+* display component version
 * inputs:
   * `allow-failure` for allowing job failure, default to `false`
 
