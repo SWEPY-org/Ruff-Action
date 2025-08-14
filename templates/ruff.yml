@@ -35,7 +35,7 @@ spec:
   stage: $[[ inputs.stage ]]
   needs: []
   before_script:
-    - echo "Ruff component version 6.1.0"
+    - echo "Ruff component version 6.1.1"
     - ruff --version
   allow_failure: $[[ inputs.allow-failure ]]
 

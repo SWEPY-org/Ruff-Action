@@ -6,7 +6,7 @@ Add the following to your `.gitlab-ci.yml` file:
 
 ```yaml
 include:
-  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@6.1.0
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@6.1.1
 ```
 
 [![Supported by GitLab.com](https://img.shields.io/badge/Supported_by-GitLab.com-orange)](https://gitlab.com)
@@ -31,7 +31,7 @@ For example:
 
 ```yml
 include:
-  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@6.1.0
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@6.1.1
     inputs:
       target-paths: "src tests dev/scripts"
       stage: lint
@@ -50,7 +50,7 @@ For example:
 
 ```yaml
 include:
-  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@6.1.0
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@6.1.1
 
 ruff_check:
   variables:
@@ -63,7 +63,7 @@ To disable one job or the other, you can add a rule:
 
 ```yml
 include:
-  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@6.1.0
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/ruff/ruff@6.1.1
 
 ruff_format:
   rules:
