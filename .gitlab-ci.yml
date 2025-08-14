@@ -1,6 +1,6 @@
 include:
   - component: $CI_SERVER_FQDN/swepy/cicd-templates/release-by-changelog/release-on-tag@2.0.0
-  - component: $CI_SERVER_FQDN/swepy/cicd-templates/bump-my-version/bump-my-version@0.3.0
+  - component: $CI_SERVER_FQDN/swepy/cicd-templates/bump-my-version/bump-my-version@0.4.0
   - project: $CI_PROJECT_NAMESPACE/ruff
     ref: $CI_COMMIT_SHA
     file: templates/ruff.yml
